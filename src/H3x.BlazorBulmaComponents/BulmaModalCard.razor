@@ -1,0 +1,38 @@
+﻿@inherits BulmaComponentBase
+
+@if (Title != null)
+{
+    <header class="modal-card-head">
+        <p class="modal-card-title" style="margin-bottom: 0;">@Title</p>
+        @if (HasCloseButton)
+        {
+            <button class="delete" aria-label="close"></button>
+        }
+    </header>
+}
+@if (Content != null)
+{
+    <section class="modal-card-body">
+        @Content
+    </section>
+}
+@if (Footer != null)
+{
+    <footer class="modal-card-foot">
+        @Footer
+    </footer>
+}
+
+@code {
+    [Parameter]
+    public RenderFragment Title { get; set; }
+
+    [Parameter]
+    public RenderFragment Content { get; set; }
+
+    [Parameter]
+    public RenderFragment Footer { get; set; }
+
+    [CascadingParameter]
+    public bool HasCloseButton { get; set; }
+}

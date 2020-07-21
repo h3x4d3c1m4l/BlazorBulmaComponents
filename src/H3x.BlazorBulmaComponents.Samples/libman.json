@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "provider": "jsdelivr",
+      "library": "bulma@0.9.0",
+      "destination": "wwwroot/lib/bulma/",
+      "files": [
+        "css/bulma.css.map",
+        "css/bulma.css"
+      ]
+    }
+  ]
+}

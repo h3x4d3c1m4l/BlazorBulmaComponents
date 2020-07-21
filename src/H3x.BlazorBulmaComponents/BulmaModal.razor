@@ -1,0 +1,48 @@
+﻿@inherits BulmaComponentBase
+
+<div class="modal @(IsActive ? "is-active" : string.Empty)">
+    @if (HasBackground)
+    {
+        <div class="modal-background"></div>
+    }
+    @if (!_contentIsModalCard && HasCloseButton)
+    {
+        <button class="modal-close is-large" aria-label="close"></button>
+    }
+    <div class="@(_contentIsModalCard ? "modal-card" : "modal-content")">
+        <CascadingValue Value="@HasCloseButton">
+            <CascadingValue Value="@ChildContentComponentReference">
+                @ChildContent
+            </CascadingValue>
+        </CascadingValue>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public bool HasBackground { get; set; }
+
+    [Parameter]
+    public bool HasCloseButton { get; set; }
+
+    [Parameter]
+    public bool IsActive { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    private ForwardRef ChildContentComponentReference { get; set; } = new ForwardRef();
+
+    private bool _contentIsModalCard;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            if (ChildContentComponentReference?.Current is BulmaModalCard)
+                _contentIsModalCard = true;
+
+            StateHasChanged();
+        }
+    }
+}

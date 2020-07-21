@@ -1,0 +1,76 @@
+﻿@inherits BulmaStylableInputBase
+
+@if (InputAttributes.TryGetValue("href", out object href) && !string.IsNullOrWhiteSpace(href as string))
+{
+    <a class="@GetCssClass()" disabled="@(IsDisabled ? string.Empty : null)" href="@href">@ChildContent</a>
+}
+else
+{
+    <button class="@GetCssClass()" disabled="@(IsDisabled ? string.Empty : null)">@ChildContent</button>
+}
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public bool IsInverted { get; set; }
+
+    [Parameter]
+    public bool IsOutlined { get; set; }
+
+    [Parameter]
+    public bool IsRounded { get; set; }
+
+    [Parameter]
+    public bool IsHovered { get; set; }
+
+    [Parameter]
+    public bool IsFocused { get; set; }
+
+    [Parameter]
+    public bool IsActive { get; set; }
+
+    [Parameter]
+    public bool IsLight { get; set; }
+
+    [Parameter]
+    public bool IsFullwidth { get; set; }
+
+    [Parameter]
+    public bool IsLoading { get; set; }
+
+    [Parameter]
+    public bool IsStatic { get; set; }
+
+    [Parameter]
+    public Dictionary<string, object> InputAttributes { get; set; }
+
+    private string GetCssClass()
+    {
+        var cssClass = "button";
+        if (IsInverted)
+            cssClass += " is-inverted";
+        if (IsOutlined)
+            cssClass += " is-outlined";
+        if (IsRounded)
+            cssClass += " is-rounded";
+        if (IsHovered)
+            cssClass += " is-hovered";
+        if (IsFocused)
+            cssClass += " is-focused";
+        if (IsActive)
+            cssClass += " is-active";
+        if (IsLight)
+            cssClass += " is-light";
+        if (IsFullwidth)
+            cssClass += " is-fullwidth";
+        if (IsLoading)
+            cssClass += " is-loading";
+        if (IsStatic)
+            cssClass += " is-static";
+        cssClass += " " + Color.ToCssClass();
+        cssClass += " " + Size.ToCssClass();
+        return cssClass;
+    }
+}
