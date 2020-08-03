@@ -23,6 +23,14 @@ namespace H3x.BlazorBulmaComponents
         Large
     }
 
+    public enum BulmaContainerType
+    {
+        Normal,
+        Fluid,
+        FullwidthUntilWidescreenBreakpoint,
+        FullwidthUntilFullhdBreakpoint
+    }
+
     static class Extensions
     {
         public static string ToCssClass(this BulmaColors color) =>

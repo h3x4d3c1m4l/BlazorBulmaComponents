@@ -1,0 +1,23 @@
+﻿@inherits BulmaComponentBase
+
+<div class="@GetCssClass()">@ChildContent</div>
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public BulmaContainerType Type { get; set; }
+
+    private string GetCssClass()
+    {
+        var cssClass = "container";
+        if (Type == BulmaContainerType.Fluid)
+            cssClass += " is-fluid";
+        else if (Type == BulmaContainerType.FullwidthUntilWidescreenBreakpoint)
+            cssClass += " is-widescreen";
+        else if (Type == BulmaContainerType.FullwidthUntilFullhdBreakpoint)
+            cssClass += " is-fullhd";
+        return cssClass;
+    }
+}

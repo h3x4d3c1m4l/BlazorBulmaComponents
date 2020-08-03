@@ -10,17 +10,17 @@
     </div>
 
     @* Header *@
-    @if (HeaderTitle != null || !string.IsNullOrWhiteSpace(TitleString))
+    @if (HeaderTitle != null || !string.IsNullOrWhiteSpace(Title))
     {
         <header class="card-header">
             <div class="card-header-title">
                 @if (HeaderTitle != null)
                 {
-                    <p>@HeaderTitle</p>
+                    @HeaderTitle
                 }
                 else
                 {
-                    <p>@TitleString</p>
+                    <p>@Title</p>
                 }
             </div>
             @if (HeaderIcon != null)
@@ -59,7 +59,7 @@
     /// Card title (will be used when HeaderTitleContent is null).
     /// </summary>
     [Parameter]
-    public string TitleString { get; set; }
+    public string Title { get; set; }
 
     // header
 
