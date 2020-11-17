@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace H3x.BlazorBulmaComponents
+﻿namespace H3x.BlazorBulmaComponents
 {
     public enum BulmaColors
     {
